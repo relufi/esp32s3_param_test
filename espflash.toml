@@ -1,0 +1,5 @@
+baudrate = 115200
+
+[flash]
+size = "8MB"
+frequency = "40MHz"

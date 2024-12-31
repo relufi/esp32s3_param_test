@@ -1,0 +1,29 @@
+[package]
+name = "esp32s3_psram_test"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+esp-backtrace = { version = "0.14.2", features = ["esp32s3","exception-handler", "panic-handler", "println"] }
+esp-hal = { version = "0.22.0", features = ["esp32s3","quad-psram"] }
+log = { version = "0.4.22" }
+esp-alloc = "0.5.0"
+esp-println = { version = "0.12.0", features = ["esp32s3","log"] }
+esp-wifi = { version = "0.11.0"  ,features = ["esp32s3","wifi"]}
+esp-hal-embassy = { version = "0.5.0",features = ["esp32s3"] }
+embassy-executor = { version = "0.6.3", features = ["nightly"] }
+embassy-time = { version = "0.3.2", features = ["generic-queue-8"] }
+static_cell = { version = "2.1.0" }
+embassy-net = { version = "0.4.0", features = ["tcp", "dhcpv4", "dns"] }
+
+
+
+[profile.release]
+codegen-units    = 1
+debug            = 2
+debug-assertions = true
+incremental      = false
+opt-level        = 3
+lto = 'fat'
+overflow-checks  = false
